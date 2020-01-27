@@ -24,4 +24,4 @@ Other Notes
 
 Use [git-lfs](https://git-lfs.github.com/) to download the image files before compiling the document.
 
-The main paper tex doc is `chapter 3/dissertation/outline.tex`
+The main paper tex doc is `dissertation/outline.tex`
