@@ -1,0 +1,68 @@
+%! TEX root = ../outline.tex
+
+The Consortium for Advanced Simulation of Light Water Reactors (CASL) selected several problems identified by industry partners as critical, inadequately understood, engineering-scale phenomena, which would provide financial and safety benefits to the nuclear power industry if resolved~\cite{Turinsky15}. The problem of interest in this work is the prediction of Chalk River unidentified deposit (crud) growth rates. In an effort to simulate the
+effects of crud on the power and burnup distribution, a code produced by a Los Alamos National Laboratory (LANL)
+and Oak Ridge National Laboratory (ORNL) collaboration under the name MAMBA was developed  \cite{collins16}.
+The development of the MPO Advanced Model for Boron Analysis (MAMBA) and other supporting Virtual Environment for Reactor Applications (VERA) tools provided a starting point for the high-to-low (hi2lo) methods at hand.
+\index{CASL} \index{VERA}
+
+A phenomena known as crud-induced power shift (CIPS) is caused by the presence
+of elevated \ce{^{10}B} concentrations in the crud layer.  Since crud is preferentially
+deposited on the fuel rods in hot regions of the core and \ce{^{10}B} is a strong neutron absorber, the crud buildup leads to a slight shift in
+power production toward the bottom of the core under steady-state operation.
+Crud induced power shift impacts the burnup distribution over a cycle, reduces shutdown margin,
+and is important to account for when computing thermal
+margins of the fuel \cite{lange2017}.  The prediction
+of CIPS is especially important for older facilities seeking to uprate power
+output or extend their operational lifetime.  Additionally, the presence of crud on the rod surface has been shown
+to exacerbate local oxide penetration rates of some zirconium alloys \cite{adamson07}.
+This is known as crud-induced local corrosion (CILC).  Improvements in crud
+simulation techniques ultimately improve the ability to predict the CIPS and
+CILC phenomena for a given fuel loading pattern.  If significant CIPS or CILC can be accurately predicted provided a candidate loading pattern, significant cost savings are possible by ensuring the target burnup is not missed due to the presence of excess crud in the core \cite{lange2017}.  Loading patterns that would yield unfavorable crud buildup could be avoided provided an accurate and robust crud prediction capability is available for use in a production environment. \index{Crud} \index{Crud!CILC} \index{Crud!CIPS}
+
+The Virtual Environment for Reactor Applications (VERA) is a key component of
+CASL's technical portfolio.  The VERA meta-package integrates a variety of physics
+packages and multiphysics coupling options to form a robust reactor simulation
+capability.  For multi-cycle depletion computations, VERA relies upon the Michigan Parallel Characteristics Based Transport (MPACT) code, a
+2-D/1-D method of characteristics neutronics package, coupled with the subchannel
+thermal hydraulics code, Coolant Boiling in Rod Arrays–Two Fluid (CTF).
+An integrated crud modeling capability
+is provided by MAMBA to address the CIPS challenge problem.
+\index{MAMBA}
+
+To reduce computation times, the subchannel TH code discretizes the reactor
+domain into large, centimeter scale finite volumes. As a consequence of this
+discretization scheme, sub-centimeter scale thermal hydraulic effects of the
+spacer grids on crud are averaged over large regions on the fuel rods'
+surfaces.  Though small scale phenomena are not explicitly modeled, they are
+approximately accounted for in a variety of empirically derived closure
+relations.  In effect, a single constant estimate for the mean thermal
+hydraulic conditions is obtained in each finite volume. \index{CTF}
+
+\section{Significance and Novelty}
+
+Crud growth is dominated by threshold physics \cite{mongoose17}.  Hot and cold spots
+present downstream of spacer grids must be accurately resolved by the hi2lo model to predict the maximum crud
+thickness and boron precipitation within the crud layer.
+
+It is challenging to faithfully capture the peaks and valleys in
+rod surface temperature and TKE distribution by traditional interpolation
+techniques because such a model must guard against smearing out the sharp peaks
+present in the spatial distributions.
+In the present method we forgo a spatial shape function mapping strategy
+for a statistically driven approach that predicts the fractional
+area of a rod's surface in excess of some critical temperature but not
+precisely where such maxima occur.
+
+\section{Crud Background} 
+
+The buildup of crud results from the deposition of metal particulates and corrosion products entrained in the primary coolant loop of a light water reactor on the exterior surface of the fuel rods.  These impurities arise from erosion and corrosion processes elsewhere in the loop.  Of all the coolant impurities, the largest contributor the initial formation of a crud layer on the outer cladding surface is nickel ferrite.  The initial build up of nickel ferrite may be described by the ordinary differential equation (ODE) shown in equation \ref{eq:crud_nife}.
+\index{Crud}
+
+\begin{equation}
+\frac{d N_{\mathrm{NiFe},c}}{dt} = (\alpha_{\mathrm{nb}} + \alpha_{b}q''_{b} )N_{\mathrm{NiFe}, \mathrm{cool}} - \gamma_k k
+\label{eq:crud_nife}
+\end{equation}
+
+Where $N_{\mathrm{NiFe},c}$ is the concentration of nickel ferrite in the crud within a small finite volume on the cladding surface.  $N_{\mathrm{NiFe}, \mathrm{cool}}$ is the concentration of nickel and iron impurities in the coolant.  $\alpha_b$ and $\alpha_{nb}$ represent boiling and non-boiling rate constants respectively.  The boiling component of the boundary heat flux (BHF) on the outer cladding surface is given by $q''_b [W/m^2]$. Note that  $q''_b$ is only non-zero when $T>T_{sat}$. $\gamma_k$ is an erosion multiplier and $k$ is the near-wall local TKE.  Crud typically forms where temperatures are high and where subcooled boiling occurs on the rod surface.
+\index{Crud!Formation}

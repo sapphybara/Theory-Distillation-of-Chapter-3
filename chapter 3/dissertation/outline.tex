@@ -1,0 +1,122 @@
+%\documentclass[12pt,a4paper]{report}
+\documentclass[12pt]{report}
+\usepackage[right=1.125in, left=1.125in, top=1.125in, bottom=0.815in]{geometry}
+%\usepackage{geometry}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{pdflscape}
+\usepackage{setspace}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{standalone}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{listings}
+\usepackage{hyperref}
+\usepackage{pgfgantt}
+\usepackage{rotating}
+\usepackage{bm}
+\usepackage{bbm}
+\usepackage{lipsum}
+\usepackage{pifont}
+\usepackage{float}
+%\usepackage{color}
+
+\usepackage{graphicx}
+\usepackage{subfig}
+\usepackage[]{algorithm}
+\usepackage{algorithmic}
+\usepackage{array}
+\usepackage{makeidx}
+\newcolumntype{A}{>{\centering\arraybackslash}m{1.8cm}}
+\newcolumntype{B}{>{\centering\arraybackslash}m{3cm}}
+\newcolumntype{C}{>{\centering\arraybackslash}m{4cm}}
+\newcolumntype{D}{>{\centering\arraybackslash}m{2.0cm}}
+\newcolumntype{L}{>{\arraybackslash}m{8cm}}
+\usepackage[version=3]{mhchem} % Package for chemical equation typesetting \ce{}
+\usepackage{siunitx} % Provides the \SI{}{} and \si{} and \num{}
+\usepackage[normalem]{ulem}  % stike-through by \sout{}
+\usepackage{tikz}
+\usetikzlibrary{matrix,arrows,decorations.markings,bending,positioning}
+\usepackage{ifthen}
+\usepackage{pgf}
+\pgfmathsetseed{\number\pdfrandomseed}
+
+
+% UT diss template setup
+\usepackage{utdiss2}
+\usepackage[T1]{fontenc}
+\usepackage{titlesec, blindtext, color}
+\definecolor{gray75}{gray}{0.75}
+\newcommand{\hsp}{\hspace{20pt}}
+
+\author{William Ladd Gurecky}
+\address{9905 Chukar Circle\\ Austin, Texas 78758}
+\title{A CFD-Informed Model for Subchannel Resolution \\ Crud Prediction}
+\supervisor{Derek Haas}
+\committeemembers
+[Benjamin Leibowicz]
+[Sheldon Landsberger]
+[Kevin Clarno]
+{Stuart Slattery}
+
+\previousdegrees{}
+% \previousdegrees{, B.S.M.E., M.S.E.}
+
+% image paths
+\graphicspath{{../proposal/}{./}{./figs/crud}}
+
+%===========================CUSTOM CMDS=======================================%
+\DeclareMathOperator*{\E}{\mathbb{E}}
+\newcommand{\xmark}{\ding{55}}%
+\makeindex
+
+\begin{document}
+\copyrightpage          % Produces the copyright page.
+\commcertpage           % Produces the Committee Certification
+\titlepage              % Produces the title page.
+	
+\renewcommand{\thepage}{\roman{page}}
+%=================================TITLE=======================================%
+%-----------------------------------------------------------------------------%
+\input{./sections/title.tex}
+
+\input{./sections/ack.tex}
+
+%Do we want the abstract? 
+%\input{./sections/abstract.tex}
+
+\pagebreak
+\tableofcontents
+\pagebreak
+
+%-----------------------------------------------------------------------------%
+\input{./sections/acryn.tex}
+
+%=================================BODY========================================%
+\titleformat{\chapter}[hang]{\Huge\bfseries}{\thechapter\hsp\textcolor{gray75}{|}\hsp}{0pt}{\Huge\bfseries}
+\renewcommand{\thepage}{\arabic{page}} % Arabic numerals for page counter
+\setcounter{page}{1}
+% \onehalfspacing
+\doublespacing  % UT formatting spec
+%-----------------------------------------------------------------------------%
+%
+\chapter{Introduction}
+\label{chap:intro}
+\input{./sections/intro.tex}
+
+%-----------------------------------------------------------------------------%
+\chapter{Theory}
+\label{chap:theory}
+\input{./sections/theory.tex}
+
+\chapter{Rod Surface Heat Transfer}
+\label{chap:app_d}
+\input{./sections/appendix/app_d.tex}
+
+\printindex
+
+\input{./sections/references.tex}
+
+
+\end{document}
