@@ -1,4 +1,4 @@
-# Theory:-Distillation-of-Chapter-3
+# Theory-Distillation-of-Chapter-3
 
 Notes/things changed are [here](https://docs.google.com/document/d/1lbwBxc7rbZKZ8NA-xL56-2k81gNX5WiKBRrA63ZTXiI/edit?usp=sharing)
 
