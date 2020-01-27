@@ -28,4 +28,4 @@ Use [git-lfs](https://git-lfs.github.com/) to download the image files before co
 
 The main paper tex doc is `dissertation/outline.tex`
 
-Downloading the .zip file from here results in corrupted images, it is far easier
+Downloading the .zip file from here results in corrupted images, it is far easier to download [git bash](https://gitforwindows.org/), but this requires basic knowledge of windows cmd/git bash language (if you're nervous about that, just go to Overleaf listed above).
